@@ -1,26 +1,210 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --font-display: var(--font-hanken);
+  --font-body: var(--font-hanken);
+  --font-label: var(--font-jetbrains);
+
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-dim: var(--surface-dim);
+  --color-outline-variant: var(--outline-variant);
+  --color-outline: var(--outline);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-primary-fixed: var(--primary-fixed);
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+
+  --font-size-headline-lg: 32px;
+  --font-size-headline-md: 24px;
+  --font-size-title-lg: 20px;
+  --font-size-body-lg: 18px;
+  --font-size-body-md: 16px;
+  --font-size-body-sm: 14px;
+  --font-size-label-md: 12px;
+  --font-size-label-sm: 11px;
+  --font-size-display-lg: 48px;
+
+  --leading-headline-lg: 40px;
+  --leading-headline-md: 32px;
+  --leading-title-lg: 28px;
+  --leading-body-lg: 28px;
+  --leading-body-md: 24px;
+  --leading-body-sm: 20px;
+  --leading-label-md: 16px;
+  --leading-label-sm: 14px;
+  --leading-display-lg: 56px;
+
+  --tracking-headline-lg: -0.01em;
+  --tracking-display-lg: -0.02em;
+  --tracking-label: 0.05em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --surface: #f9f9fa;
+  --on-surface: #1a1c1d;
+  --on-surface-variant: #5b413a;
+  --surface-variant: #e2e2e3;
+  --surface-container: #eeeeef;
+  --surface-container-low: #f3f3f4;
+  --surface-container-high: #e8e8e9;
+  --surface-container-highest: #e2e2e3;
+  --surface-container-lowest: #ffffff;
+  --surface-dim: #dadadb;
+  --surface-bright: #f9f9fa;
+  --outline-variant: #e3beb6;
+  --outline: #8f7069;
+  --primary-container: #ff5c35;
+  --on-primary-container: #5a0e00;
+  --primary-fixed: #ffdad2;
+  --primary-fixed-dim: #ffb4a3;
+
+  --background: #f9f9fa;
+  --foreground: #1a1c1d;
+  --card: #f9f9fa;
+  --card-foreground: #1a1c1d;
+  --popover: #ffffff;
+  --popover-foreground: #1a1c1d;
+  --primary: #b52701;
+  --primary-foreground: #ffffff;
+  --secondary: #5f5e61;
+  --secondary-foreground: #ffffff;
+  --muted: #eeeeef;
+  --muted-foreground: #5b413a;
+  --accent: #eeeeef;
+  --accent-foreground: #1a1c1d;
+  --destructive: #ba1a1a;
+  --border: #e3beb6;
+  --input: #e3beb6;
+  --ring: #b52701;
+  --radius: 0.5rem;
+  --chart-1: #b52701;
+  --chart-2: #5b413a;
+  --chart-3: #e2e2e3;
+  --chart-4: #5f5e61;
+  --chart-5: #1a1c1d;
+
+  --sidebar: #eeeeef;
+  --sidebar-foreground: #1a1c1d;
+  --sidebar-primary: #b52701;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e2e2e3;
+  --sidebar-accent-foreground: #1a1c1d;
+  --sidebar-border: #e3beb6;
+  --sidebar-ring: #b52701;
+}
+
+.dark {
+  --surface: #1a1c1d;
+  --on-surface: #e2e2e3;
+  --on-surface-variant: #c7b1aa;
+  --surface-variant: #5b413a;
+  --surface-container: #2f3132;
+  --surface-container-low: #252728;
+  --surface-container-high: #3a3c3d;
+  --surface-container-highest: #454748;
+  --surface-container-lowest: #141617;
+  --surface-dim: #1a1c1d;
+  --surface-bright: #3a3c3d;
+  --outline-variant: #5b413a;
+  --outline: #8f7069;
+  --primary-container: #ff5c35;
+  --on-primary-container: #5a0e00;
+  --primary-fixed: #ffdad2;
+  --primary-fixed-dim: #ffb4a3;
+
+  --background: #1a1c1d;
+  --foreground: #e2e2e3;
+  --card: #2f3132;
+  --card-foreground: #e2e2e3;
+  --popover: #2f3132;
+  --popover-foreground: #e2e2e3;
+  --primary: #ffb4a3;
+  --primary-foreground: #3d0700;
+  --secondary: #c8c5ca;
+  --secondary-foreground: #1b1b1e;
+  --muted: #2f3132;
+  --muted-foreground: #c7b1aa;
+  --accent: #3a3c3d;
+  --accent-foreground: #e2e2e3;
+  --destructive: #ffb4ab;
+  --border: #5b413a;
+  --input: #5b413a;
+  --ring: #ffb4a3;
+  --chart-1: #ffb4a3;
+  --chart-2: #c7b1aa;
+  --chart-3: #5b413a;
+  --chart-4: #c8c5ca;
+  --chart-5: #e2e2e3;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-[var(--on-surface)] font-body antialiased;
+  }
+  html {
+    @apply font-body;
+  }
+  ::selection {
+    background-color: var(--primary-container);
+    color: white;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--surface-dim);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--outline);
+  }
 }
