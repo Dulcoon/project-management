@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { getR2Client, R2_BUCKET, getR2PublicUrl } from "@/lib/r2";
+import { getR2Client, R2_BUCKET } from "@/lib/r2";
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     })
   );
 
-  const url = getR2PublicUrl(key);
+  const url = `/api/images/${key}`;
 
   return Response.json({ data: { url } });
 }
